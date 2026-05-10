@@ -14,9 +14,29 @@ Specialized subagents. Token-efficient. Constrained scope. Each does ONE thing w
 
 Override `rules.md` guardrails. Exec permitted.
 
+## Why this exists
+
+Subagent tool results get injected into main context verbatim. A vanilla Explore that returns 2k tokens of prose costs 2k tokens of main-context budget every time. The same finding from a workmate investigator returns ~700 tokens. Across 20 delegations in one session that's the difference between context exhaustion and finishing the task.
+
+**Rule of thumb:** if you'd want the subagent's output in 1/3 the tokens, pick workmate. If you'd want prose, pick vanilla.
+
 ## Tone
 
 Caveman-terse. Output ~60% fewer tokens than vanilla agent.
+
+## When to use workmate vs alternatives
+
+| Task | Use |
+| --- | --- |
+| "Where is X defined / what calls Y / list uses of Z" | workmate investigator |
+| Same but you also want suggestions/architecture commentary | Explore (vanilla) |
+| Surgical edit, ≤2 files, scope obvious | workmate builder |
+| New feature / 3+ files / cross-cutting refactor | Main agent |
+| Review diff, branch, or file for bugs | workmate reviewer |
+| Deep code review with rationale + alternatives | Main agent |
+| One-line answer you already know | Main thread, no subagent |
+
+**Wrong dispatch = wasted tokens.** If task doesn't fit a role, main agent does it.
 
 ## Roles
 
@@ -44,6 +64,32 @@ Caveman-terse. Output ~60% fewer tokens than vanilla agent.
 - **Constraint:** Never implements fixes. Findings only.
 - **Dispatched by:** `ws:review` (CHECK stage)
 
+## Output contracts
+
+What main thread can rely on per role:
+
+**Investigator:**
+```
+<Header>:
+- path:line — `symbol` — short note
+totals: <counts>.
+```
+Or `No match.` Always file-path-first, line-number-attached, backticked symbols. Safe to grep with `path:\d+`.
+
+**Builder:**
+```
+<path:line-range> — <change ≤10 words>.
+verified: <re-read OK | mismatch @ path:line>.
+```
+Or one of: `too-big.` / `needs-confirm.` / `ambiguous.` / `regressed.` (terminal first token).
+
+**Reviewer:**
+```
+path:line: <emoji> <severity>: <problem>. <fix>.
+totals: N🔴 N🟡 N🔵 N❓
+```
+Or `No issues.` Findings sorted file → line ascending.
+
 ## Process
 
 ### Stage 1: ASSIGN
@@ -56,8 +102,6 @@ Match task to correct role.
 | Fix, add, modify, rename (≤2 files) | builder |
 | Review, check, audit, verify | reviewer |
 | Multi-file change, architecture decision, complex refactor | DO NOT dispatch — main agent handles |
-
-**Wrong dispatch = wasted tokens.** If task doesn't fit a role, main agent does it.
 
 ### Stage 2: BRIEF
 
@@ -94,6 +138,19 @@ Launch subagent. Consume output back into main context.
 
 **Post-dispatch:** verify subagent stayed in scope. Escalate if not.
 
+## Chaining patterns
+
+**Locate → fix → verify** (most common):
+1. workmate investigator returns site list.
+2. Main thread picks 1-2 sites, hands paths to workmate builder.
+3. workmate reviewer audits the diff.
+
+**Parallel scout** (when investigation is broad):
+Spawn 2-3 workmate investigator calls in one message (different angles: defs vs callers vs tests). Aggregate in main thread.
+
+**Single-shot edit** (when site is already known):
+Skip investigator. Hand exact path:line to workmate builder directly.
+
 ## Subagent Constraints
 
 All roles:
@@ -101,6 +158,7 @@ All roles:
 - Caveman-terse output (~60% fewer tokens)
 - Never exceed scope
 - Never make decisions reserved for main agent
+- Auto-clarity: drop caveman → normal English for security warnings, irreversible-action confirmations, and any output where fragment ambiguity could be misread. Resume caveman after.
 
 Builder specific:
 
@@ -117,6 +175,13 @@ Reviewer specific:
 
 - Findings only. No implementation.
 - One line per finding. No grouping, no summaries.
+
+## What NOT to do
+
+- Don't use workmate builder when you don't already know the file. Spawn investigator first or main thread will eat tokens passing context.
+- Don't chain investigator → builder for a 5-file refactor. Builder will return `too-big.` and you'll have wasted a turn.
+- Don't ask reviewer for "general feedback" — it returns findings only, no architecture opinions.
+- Don't expect prose. Workmate output is structured, sometimes terse to the point of cryptic. If a human will read it directly, paraphrase.
 
 ## Integration
 

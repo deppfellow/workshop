@@ -112,7 +112,7 @@ Tool preference:
 - [ ] Throwaway prototypes deleted (or moved to clearly-marked debug location)
 - [ ] Hypothesis that was correct stated in commit/PR message
 
-**Post-mortem:** what would have prevented this bug? If architectural change needed (no good test seam, tangled callers) — recommend `ws:spec` revision or architecture improvement.
+**Post-mortem:** what would have prevented this bug? If the answer involves architectural change (no good test seam, tangled callers, hidden coupling) — hand off to `ws:improvement` with the specifics. Make the recommendation **after** the fix is in, not before — you have more information now than when you started.
 
 ## Guardrails
 
@@ -126,5 +126,5 @@ Tool preference:
 
 - May consume output from `ws:spec`, `ws:plan`, or any bug report
 - Dispatches `ws:workmate` investigator (codebase tracing) and builder (instrumentation)
-- Feeds architectural findings back to `ws:spec` or `ws:plan` for revision
+- Feeds architectural findings to `ws:improvement` for deepening or `ws:spec` for revision
 - Cleanup step produces commit message including correct hypothesis

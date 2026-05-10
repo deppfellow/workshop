@@ -14,7 +14,7 @@ Override `rules.md` guardrails. Exec permitted.
 
 ## Tone
 
-Caveman-terse.
+Caveman-terse. Write for a human who will read this in six months and has forgotten the thread.
 
 ## Process
 
@@ -38,6 +38,7 @@ Break into vertical tracer-bullet slices. Group into epics.
 - A completed slice is demoable or verifiable on its own
 - Prefer many thin slices over few thick ones
 - Group related slices into epics (BMAD-style epic grouping)
+- Each slice must carry enough context for an AI agent with no prior session to execute independently
 
 **Per slice:**
 
@@ -47,6 +48,8 @@ Break into vertical tracer-bullet slices. Group into epics.
 - **Blocked by** — which other slices must complete first
 - **User stories covered** — which spec stories this addresses
 - **Estimated effort** — small / medium / large
+- **Acceptance criteria** — outcomes, not implementation steps
+- **Verify** — concrete, runnable checks that prove the slice works
 
 **HITL vs AFK:**
 
@@ -87,7 +90,13 @@ Epic: <next-epic>
 3. Write to `docs/<slug>/plan.md`
 4. Optional: publish slices to issue tracker (GitHub/GitLab/local markdown)
 
+**Issue tracker publishing (when requested):**
+
+Publish slices as issues in dependency order (blockers first) so real issue identifiers can be referenced in "Blocked by" fields. Apply `ready-for-agent` label to AFK slices.
+
 ## Output Format
+
+### Plan file
 
 `docs/<feature-slug>/plan.md`:
 
@@ -101,6 +110,37 @@ Epic: <next-epic>
 - User stories: #1, #3
 - Effort: medium
 - Acceptance: <verifiable outcome>
+- Verify: <concrete runnable check>
+```
+
+### Issue tracker template (when publishing)
+
+```markdown
+## Parent
+
+A reference to the parent issue (if source was an existing issue, otherwise omit).
+
+## What to build
+
+A concise description of this vertical slice. Describe the end-to-end behavior,
+not layer-by-layer implementation.
+
+Avoid specific file paths or code snippets — they go stale fast. Exception: if a
+prototype produced a snippet that encodes a decision more precisely than prose
+can (state machine, reducer, schema, type shape), inline it here and note it
+came from a prototype. Trim to decision-rich parts.
+
+## Acceptance criteria
+
+- [ ] Criterion 1
+- [ ] Criterion 2
+- [ ] Criterion 3
+
+## Blocked by
+
+- A reference to the blocking ticket (if any)
+
+Or "None — can start immediately" if no blockers.
 ```
 
 ## Guardrails
@@ -109,6 +149,9 @@ Epic: <next-epic>
 - Never skip the SLICE review gate
 - Never create horizontal slices (one layer at a time)
 - If spec is ambiguous, stop and request `ws:spec` revision — don't guess
+- Acceptance criteria describe outcomes, not implementation steps
+- Verify steps must be concrete and runnable without inventing missing inputs
+- If a task needs many acceptance criteria or mixes unrelated decision clusters, split it
 
 ## Integration
 

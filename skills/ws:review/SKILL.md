@@ -26,7 +26,9 @@ Understand what changed and why.
 1. Read diff/PR — what files changed, what was added/removed
 2. Read the plan slice this implements (from `docs/<slug>/plan.md`)
 3. Read the spec for acceptance criteria (from `docs/<slug>/spec.md`)
-4. Check: does the diff match the plan slice? Stray changes?
+4. Read `REVIEW.md` from repo root if it exists — apply project-specific concerns
+5. If reviewing a PR, read open review comments and classify each: real issue, style preference, or false positive
+6. Check: does the diff match the plan slice? Stray changes?
 
 **Dispatch `ws:workmate` investigator** for unfamiliar code paths.
 
@@ -102,6 +104,10 @@ CHANGES REQUESTED — 2 🔴, 2 🟡.
 - Never write implementation in review — findings only
 - Reviewer subagent: one-line per finding, no prose
 - If spec is missing or outdated, flag it — don't review against stale instructions
+- Flag decisions made in code that should have been surfaced in the request, spec, plan, or review context
+- Flag broken invariants and silent contract changes from the available context
+- Be direct about uncertainty; do not speculate without evidence
+- Tie every finding to concrete evidence
 
 ## Integration
 

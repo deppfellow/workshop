@@ -99,6 +99,8 @@ Only when GREEN. Never red.
 - Test private methods (test through public interface)
 - Verify through external means (query DB directly instead of interface)
 - Refactor while RED (get to GREEN first)
+- Use mocks when real boundaries are practical
+- Apply TDD to documentation, formatting, or non-behavioral scaffolding work
 
 ## Guardrails
 
