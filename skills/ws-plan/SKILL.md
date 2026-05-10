@@ -10,8 +10,6 @@ trigger: ws-plan, create plan, plan for, break down spec
 
 Vertical slices. Each cuts ALL layers end-to-end. Group related slices into epics. Portable task list + optional issue tracker push.
 
-Override `rules.md` guardrails. Exec permitted.
-
 ## Tone
 
 Caveman-terse. Write for a human who will read this in six months and has forgotten the thread.

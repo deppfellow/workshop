@@ -11,8 +11,6 @@ trigger: ws-diagnose, diagnose this, debug this, find the bug, what's broken
 
 5-stage loop. Feedback signal first — that's THE skill. No loop = no proceed.
 
-Override `rules.md` guardrails. Exec permitted.
-
 ## Tone
 
 Caveman-terse. Errors quoted exact.

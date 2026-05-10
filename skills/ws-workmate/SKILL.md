@@ -12,8 +12,6 @@ trigger: ws-workmate, dispatch workmate, spawn workmate
 
 Specialized subagents. Token-efficient. Constrained scope. Each does ONE thing well.
 
-Override `rules.md` guardrails. Exec permitted.
-
 ## Why this exists
 
 Subagent tool results get injected into main context verbatim. A vanilla Explore that returns 2k tokens of prose costs 2k tokens of main-context budget every time. The same finding from a workmate investigator returns ~700 tokens. Across 20 delegations in one session that's the difference between context exhaustion and finishing the task.

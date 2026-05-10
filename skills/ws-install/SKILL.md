@@ -13,8 +13,6 @@ Scaffold full repo. Install ws-* skills. Write config. Detect agent.
 
 No external provider install. ws-* skills are standalone.
 
-Override `rules.md` guardrails. Exec permitted.
-
 ## Tone
 
 Caveman-terse.
