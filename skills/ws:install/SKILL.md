@@ -55,11 +55,15 @@ Create repo structure. Write config files.
 ```text
 project-root/
 ├── .docs/
+│   ├── ws:brainstorm/SKILL.md
+│   ├── ws:brainstorm-ref-docs/SKILL.md
+│   ├── ws:direct-talk/SKILL.md
 │   ├── ws:spec/SKILL.md
 │   ├── ws:plan/SKILL.md
 │   ├── ws:tdd/SKILL.md
 │   ├── ws:review/SKILL.md
 │   ├── ws:diagnose/SKILL.md
+│   ├── ws:improvement/SKILL.md
 │   ├── ws:workmate/SKILL.md
 │   └── ws:install/SKILL.md
 ├── docs/
@@ -94,11 +98,15 @@ disciplined engineering, and terse communication.
 
 | Skill | Purpose | Invoke |
 |---|---|---|
+| ws:brainstorm | Relentless interview (stress-test plans) | ws:brainstorm |
+| ws:brainstorm-ref-docs | Docs-aware interview (updates CONTEXT.md + ADRs) | ws:brainstorm-ref-docs |
+| ws:direct-talk | Compact communication mode (lite/full) | ws:direct-talk |
 | ws:spec | Spec writer (requirements + design) | ws:spec |
 | ws:plan | Task breakdown (vertical slices + epics) | ws:plan |
 | ws:tdd | Test-driven development | ws:tdd |
 | ws:review | Code review (4 lenses) | ws:review |
 | ws:diagnose | Bug diagnosis (5-stage loop) | ws:diagnose |
+| ws:improvement | Architecture deepening | ws:improvement |
 | ws:workmate | Subagent orchestration | ws:workmate |
 | ws:install | Workshop setup | ws:install |
 
@@ -123,11 +131,15 @@ All ws:* skills read these for vocabulary and past decisions.
 {
   "version": 1,
   "skills": {
+    "ws:brainstorm": { "source": "local", "skillPath": ".docs/ws:brainstorm/SKILL.md" },
+    "ws:brainstorm-ref-docs": { "source": "local", "skillPath": ".docs/ws:brainstorm-ref-docs/SKILL.md" },
+    "ws:direct-talk": { "source": "local", "skillPath": ".docs/ws:direct-talk/SKILL.md" },
     "ws:spec": { "source": "local", "skillPath": ".docs/ws:spec/SKILL.md" },
     "ws:plan": { "source": "local", "skillPath": ".docs/ws:plan/SKILL.md" },
     "ws:tdd": { "source": "local", "skillPath": ".docs/ws:tdd/SKILL.md" },
     "ws:review": { "source": "local", "skillPath": ".docs/ws:review/SKILL.md" },
     "ws:diagnose": { "source": "local", "skillPath": ".docs/ws:diagnose/SKILL.md" },
+    "ws:improvement": { "source": "local", "skillPath": ".docs/ws:improvement/SKILL.md" },
     "ws:workmate": { "source": "local", "skillPath": ".docs/ws:workmate/SKILL.md" },
     "ws:install": { "source": "local", "skillPath": ".docs/ws:install/SKILL.md" }
   }
@@ -138,7 +150,7 @@ All ws:* skills read these for vocabulary and past decisions.
 
 Post-install checks.
 
-- [ ] All 7 ws:* SKILL.md files present in `.docs/`
+- [ ] All 11 ws:* SKILL.md files present in `.docs/`
 - [ ] `skills-lock.json` valid and matches installed skills
 - [ ] `AGENTS.md` or `CLAUDE.md` has workshop block
 - [ ] `CONTEXT.md` exists
@@ -148,7 +160,7 @@ Post-install checks.
 **Report:**
 
 - Agent detected: <agent>
-- Skills installed: 7/7
+- Skills installed: 11/11
 - Next step: `ws:spec` to start feature work
 
 ## Guardrails
