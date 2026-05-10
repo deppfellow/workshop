@@ -1,13 +1,13 @@
 ---
-name: ws:spec
+name: ws-spec
 description: >
   Write a spec — requirements and technical design in one document.
   Use when starting new feature work or when design decisions matter.
-  Invoke with "ws:spec", "write a spec", or "create spec for...".
-trigger: ws:spec, write a spec, create spec, spec for
+  Invoke with "ws-spec", "write a spec", or "create spec for...".
+trigger: ws-spec, write a spec, create spec, spec for
 ---
 
-# ws:spec
+# ws-spec
 
 One document. Requirements AND design together. Spec is prompt with weight — once code right, spec job done.
 
@@ -106,7 +106,7 @@ Prior art — similar tests in the codebase that inform approach.
 
 ## Integration
 
-- Feeds into `ws:plan` (spec → plan)
-- `ws:workmate` investigator can be dispatched during Stage 1 exploration
-- `ws:brainstorm` or `ws:brainstorm-ref-docs` can feed into spec
+- Feeds into `ws-plan` (spec → plan)
+- `ws-workmate` investigator can be dispatched during Stage 1 exploration
+- `ws-brainstorm` or `ws-brainstorm-ref-docs` can feed into spec
 - Caveman-terse output throughout

@@ -1,14 +1,14 @@
 ---
-name: ws:workmate
+name: ws-workmate
 description: >
-  Token-efficient specialized subagents dispatched by other ws:* skills.
+  Token-efficient specialized subagents dispatched by other ws-* skills.
   Three roles: investigator (read-only locator), builder (surgical 1-2 file edits),
   reviewer (one-line findings). ~60% fewer tokens than vanilla agents.
-  Not invoked directly — dispatched by ws:spec, ws:plan, ws:tdd, ws:review, ws:diagnose.
-trigger: ws:workmate, dispatch workmate, spawn workmate
+  Not invoked directly — dispatched by ws-spec, ws-plan, ws-tdd, ws-review, ws-diagnose.
+trigger: ws-workmate, dispatch workmate, spawn workmate
 ---
 
-# ws:workmate
+# ws-workmate
 
 Specialized subagents. Token-efficient. Constrained scope. Each does ONE thing well.
 
@@ -46,7 +46,7 @@ Caveman-terse. Output ~60% fewer tokens than vanilla agent.
 - **Answers:** "where is X?" "trace this path" "what calls this?" "find all references to Y"
 - **Output:** File paths, line numbers, call chains, data flow. No edits.
 - **Constraint:** NEVER edits files. Read-only.
-- **Dispatched by:** `ws:diagnose` (LOOP stage), `ws:plan` (INGEST stage), `ws:review` (SCAN stage), `ws:spec` (DEFINE stage)
+- **Dispatched by:** `ws-diagnose` (LOOP stage), `ws-plan` (INGEST stage), `ws-review` (SCAN stage), `ws-spec` (DEFINE stage)
 
 ### Builder
 
@@ -54,7 +54,7 @@ Caveman-terse. Output ~60% fewer tokens than vanilla agent.
 - **Answers:** "fix this one function" "add this single method" "rename this symbol in 2 files"
 - **Output:** Edited files. Tests pass.
 - **Constraint:** Refuses >2 files. If change needs 3+ files — reject, escalate to main agent.
-- **Dispatched by:** `ws:tdd` (BUILD stage), `ws:diagnose` (INSTRUMENT stage)
+- **Dispatched by:** `ws-tdd` (BUILD stage), `ws-diagnose` (INSTRUMENT stage)
 
 ### Reviewer
 
@@ -62,7 +62,7 @@ Caveman-terse. Output ~60% fewer tokens than vanilla agent.
 - **Answers:** "review this diff" "check this file for security" "are these tests real?"
 - **Output:** Terse findings. Format: `L42: 🔴 bug: user null. Add guard.` No prose.
 - **Constraint:** Never implements fixes. Findings only.
-- **Dispatched by:** `ws:review` (CHECK stage)
+- **Dispatched by:** `ws-review` (CHECK stage)
 
 ## Output contracts
 
@@ -134,7 +134,7 @@ Launch subagent. Consume output back into main context.
 
 - Investigator output → main agent uses for decision-making
 - Builder output → main agent verifies (tests pass, scope respected)
-- Reviewer output → main agent synthesizes into `ws:review` report
+- Reviewer output → main agent synthesizes into `ws-review` report
 
 **Post-dispatch:** verify subagent stayed in scope. Escalate if not.
 
@@ -185,10 +185,10 @@ Reviewer specific:
 
 ## Integration
 
-Not invoked directly by user — dispatched by other ws:* skills:
+Not invoked directly by user — dispatched by other ws-* skills:
 
-- `ws:spec` → investigator (DEFINE stage)
-- `ws:plan` → investigator (INGEST stage)
-- `ws:tdd` → investigator (SETUP) + builder (BUILD)
-- `ws:review` → investigator (SCAN) + reviewer (CHECK)
-- `ws:diagnose` → investigator (LOOP) + builder (INSTRUMENT)
+- `ws-spec` → investigator (DEFINE stage)
+- `ws-plan` → investigator (INGEST stage)
+- `ws-tdd` → investigator (SETUP) + builder (BUILD)
+- `ws-review` → investigator (SCAN) + reviewer (CHECK)
+- `ws-diagnose` → investigator (LOOP) + builder (INSTRUMENT)

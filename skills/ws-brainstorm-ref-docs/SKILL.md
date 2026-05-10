@@ -1,16 +1,16 @@
 ---
-name: ws:brainstorm-ref-docs
+name: ws-brainstorm-ref-docs
 description: >
-  Docs-aware brainstorming session. Same relentless interview as ws:brainstorm,
+  Docs-aware brainstorming session. Same relentless interview as ws-brainstorm,
   but challenges plans against the project's domain glossary (CONTEXT.md),
   sharpens fuzzy terminology, updates documentation inline as decisions
   crystallise, and offers ADRs for hard-to-reverse decisions. Use when user
   wants to stress-test a plan against their project's language and documented
   decisions.
-trigger: ws:brainstorm-ref-docs, brainstorm with docs, grill with docs, stress-test docs
+trigger: ws-brainstorm-ref-docs, brainstorm with docs, grill with docs, stress-test docs
 ---
 
-# ws:brainstorm-ref-docs
+# ws-brainstorm-ref-docs
 
 Relentless interview + domain-aware docs integration. One question at a time. Walk the decision tree. Update docs as decisions land.
 
@@ -39,9 +39,9 @@ Understand what is being brainstormed. Explore the project's domain documentatio
 
 ### Stage 2: GRILL
 
-One question at a time. Walk every branch. Same rules as `ws:brainstorm`, with domain-aware additions:
+One question at a time. Walk every branch. Same rules as `ws-brainstorm`, with domain-aware additions:
 
-**Base rules (same as ws:brainstorm):**
+**Base rules (same as ws-brainstorm):**
 
 - Ask ONE question. Wait for answer.
 - Provide your recommended answer with each question.
@@ -130,8 +130,8 @@ Docs are updated inline during Stage 3. Optional: write brainstorm summary to `d
 
 ## Integration
 
-- Feeds into `ws:spec` (brainstorm → spec, with updated CONTEXT.md and ADRs)
-- Feeds into `ws:plan` (brainstorm → plan)
+- Feeds into `ws-spec` (brainstorm → spec, with updated CONTEXT.md and ADRs)
+- Feeds into `ws-plan` (brainstorm → plan)
 - Can consume output from any skill as input
-- Use `ws:brainstorm` when docs integration is not needed
-- `ws:improvement` may reference ADRs created here
+- Use `ws-brainstorm` when docs integration is not needed
+- `ws-improvement` may reference ADRs created here

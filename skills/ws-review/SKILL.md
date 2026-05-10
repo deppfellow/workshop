@@ -1,13 +1,13 @@
 ---
-name: ws:review
+name: ws-review
 description: >
   Review code and specs through 4 lenses: correctness, security, simplicity, test reality.
   Terse one-liner findings. Verdict: APPROVED or CHANGES REQUESTED.
-  Use after ws:tdd, before merge, or on any diff/PR.
-trigger: ws:review, review this, code review, review diff
+  Use after ws-tdd, before merge, or on any diff/PR.
+trigger: ws-review, review this, code review, review diff
 ---
 
-# ws:review
+# ws-review
 
 4 lenses. One-line findings. No throat-clearing. Tests are real or they're theatre.
 
@@ -30,7 +30,7 @@ Understand what changed and why.
 5. If reviewing a PR, read open review comments and classify each: real issue, style preference, or false positive
 6. Check: does the diff match the plan slice? Stray changes?
 
-**Dispatch `ws:workmate` investigator** for unfamiliar code paths.
+**Dispatch `ws-workmate` investigator** for unfamiliar code paths.
 
 ### Stage 2: CHECK
 
@@ -65,7 +65,7 @@ Understand what changed and why.
 - Missing: happy path? sad path? edge case?
 - Theatre tests? (asserts nothing meaningful, or tests the mock)
 
-**Dispatch `ws:workmate` reviewer** for per-file findings.
+**Dispatch `ws-workmate` reviewer** for per-file findings.
 
 ### Stage 3: REPORT
 
@@ -74,7 +74,7 @@ Terse findings. Verdict.
 **Format:**
 
 ```markdown
-## ws:review
+## ws-review
 
 ### 🔴 Must Fix
 L42: bug — user null on empty session. Add guard before L42.
@@ -111,7 +111,7 @@ CHANGES REQUESTED — 2 🔴, 2 🟡.
 
 ## Integration
 
-- Consumes output from `ws:tdd` or any PR/diff
-- Dispatches `ws:workmate` investigator (unfamiliar code) and reviewer (per-file findings)
+- Consumes output from `ws-tdd` or any PR/diff
+- Dispatches `ws-workmate` investigator (unfamiliar code) and reviewer (per-file findings)
 - Feeds into merge decision
-- Findings format compatible with `ws:diagnose` if post-merge bug found
+- Findings format compatible with `ws-diagnose` if post-merge bug found

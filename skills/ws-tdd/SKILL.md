@@ -1,13 +1,13 @@
 ---
-name: ws:tdd
+name: ws-tdd
 description: >
   Test-driven development with red-green-refactor vertical slices.
-  Consumes a single task from ws:plan. Tests prove behavior through public interfaces.
+  Consumes a single task from ws-plan. Tests prove behavior through public interfaces.
   Use when building features, fixing bugs test-first, or implementing a plan slice.
-trigger: ws:tdd, tdd, test-first, red-green-refactor
+trigger: ws-tdd, tdd, test-first, red-green-refactor
 ---
 
-# ws:tdd
+# ws-tdd
 
 Build behavior, not implementation. Red → Green → Refactor. One test. One slice. Vertical always.
 
@@ -37,7 +37,7 @@ Caveman-terse.
 
 **Gate:** Confirm interface changes and test priorities with user before writing code.
 
-**Dispatch `ws:workmate` investigator** for codebase exploration if needed.
+**Dispatch `ws-workmate` investigator** for codebase exploration if needed.
 
 ### Stage 2: BUILD
 
@@ -66,7 +66,7 @@ For each remaining behavior:
 - Tests describe behavior, not implementation
 - Tests use public interface only
 
-**Dispatch `ws:workmate` builder** for surgical edits (1-2 files max).
+**Dispatch `ws-workmate` builder** for surgical edits (1-2 files max).
 
 ### Stage 3: REFACTOR
 
@@ -107,11 +107,11 @@ Only when GREEN. Never red.
 - Never skip the setup confirmation gate
 - One test at a time — no batch writing
 - Tests must survive internal refactor
-- `ws:workmate` builder: if change >2 files, reject — escalate to main agent
+- `ws-workmate` builder: if change >2 files, reject — escalate to main agent
 
 ## Integration
 
-- Consumes `ws:plan` slice
-- Dispatches `ws:workmate` builder for surgical edits
-- Dispatches `ws:workmate` investigator for codebase exploration
-- Feeds into `ws:review` after implementation
+- Consumes `ws-plan` slice
+- Dispatches `ws-workmate` builder for surgical edits
+- Dispatches `ws-workmate` investigator for codebase exploration
+- Feeds into `ws-review` after implementation

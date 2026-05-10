@@ -1,13 +1,13 @@
 ---
-name: ws:diagnose
+name: ws-diagnose
 description: >
   Disciplined diagnosis loop for hard bugs and performance regressions.
   Reproduce → hypothesise → instrument → fix → regression-test.
   Use when bug reported, something broken/throwing/failing, or performance regression.
-trigger: ws:diagnose, diagnose this, debug this, find the bug, what's broken
+trigger: ws-diagnose, diagnose this, debug this, find the bug, what's broken
 ---
 
-# ws:diagnose
+# ws-diagnose
 
 5-stage loop. Feedback signal first — that's THE skill. No loop = no proceed.
 
@@ -48,7 +48,7 @@ Spend disproportionate effort here. Be aggressive. Be creative. Refuse to give u
 
 **If no loop possible:** stop. Say so. List what tried. Ask user for: env access, captured artifact (HAR, log dump, core dump), or permission for temp instrumentation.
 
-**Dispatch `ws:workmate` investigator** for codebase exploration — trace the bug path.
+**Dispatch `ws-workmate` investigator** for codebase exploration — trace the bug path.
 
 **Gate:** loop exists and produces failure. Do not proceed without.
 
@@ -90,13 +90,13 @@ Tool preference:
 
 **Perf branch:** For performance regressions, logs usually wrong. Instead: establish baseline (timing harness, `performance.now()`, profiler, query plan), then bisect. Measure first, fix second.
 
-**Dispatch `ws:workmate` builder** for small instrumentation changes.
+**Dispatch `ws-workmate` builder** for small instrumentation changes.
 
 ### Stage 5: FIX
 
 1. **Regression test first** — but only if correct seam exists
 2. A correct seam: test exercises REAL bug pattern at call site. Shallow seam (single-caller test when bug needs multiple callers) = false confidence
-3. **If no correct seam exists** — that IS the finding. Note it. Architecture prevents bug from being locked down. Flag for `ws:spec` revision.
+3. **If no correct seam exists** — that IS the finding. Note it. Architecture prevents bug from being locked down. Flag for `ws-spec` revision.
 4. If correct seam exists:
    - Turn minimised repro into failing test at that seam
    - Watch it fail
@@ -112,7 +112,7 @@ Tool preference:
 - [ ] Throwaway prototypes deleted (or moved to clearly-marked debug location)
 - [ ] Hypothesis that was correct stated in commit/PR message
 
-**Post-mortem:** what would have prevented this bug? If the answer involves architectural change (no good test seam, tangled callers, hidden coupling) — hand off to `ws:improvement` with the specifics. Make the recommendation **after** the fix is in, not before — you have more information now than when you started.
+**Post-mortem:** what would have prevented this bug? If the answer involves architectural change (no good test seam, tangled callers, hidden coupling) — hand off to `ws-improvement` with the specifics. Make the recommendation **after** the fix is in, not before — you have more information now than when you started.
 
 ## Guardrails
 
@@ -124,7 +124,7 @@ Tool preference:
 
 ## Integration
 
-- May consume output from `ws:spec`, `ws:plan`, or any bug report
-- Dispatches `ws:workmate` investigator (codebase tracing) and builder (instrumentation)
-- Feeds architectural findings to `ws:improvement` for deepening or `ws:spec` for revision
+- May consume output from `ws-spec`, `ws-plan`, or any bug report
+- Dispatches `ws-workmate` investigator (codebase tracing) and builder (instrumentation)
+- Feeds architectural findings to `ws-improvement` for deepening or `ws-spec` for revision
 - Cleanup step produces commit message including correct hypothesis

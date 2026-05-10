@@ -1,14 +1,14 @@
 ---
-name: ws:direct-talk
+name: ws-direct-talk
 description: >
   Compact communication mode. Two intensities: lite (professional, tight) and
   full (caveman-terse, maximum compression). Cuts filler while keeping full
   technical accuracy. Smart rules auto-disable for high-impact operations.
   Use when user says "direct talk", "talk direct", "less tokens", "talk shorter".
-trigger: ws:direct-talk, direct talk, talk direct, less tokens, talk shorter
+trigger: ws-direct-talk, direct talk, talk direct, less tokens, talk shorter
 ---
 
-# ws:direct-talk
+# ws-direct-talk
 
 Compact speech. All technical substance stay. Only fluff die.
 
@@ -16,7 +16,7 @@ Compact speech. All technical substance stay. Only fluff die.
 
 ACTIVE EVERY RESPONSE once triggered. No revert after many turns. No filler drift. Still active if unsure. Off only: "stop direct-talk" / "normal mode".
 
-Default: **full**. Switch: `ws:direct-talk lite` or `ws:direct-talk full`.
+Default: **full**. Switch: `ws-direct-talk lite` or `ws-direct-talk full`.
 
 ## Modes
 
@@ -86,14 +86,14 @@ Example — destructive op:
 
 Direct-talk stays on for: code exploration, status updates, file listings, plan summaries, review findings, brainstorm questions, implementation steps, test results, general Q&A.
 
-## Integration with ws:* Skills
+## Integration with ws-* Skills
 
-When ws:direct-talk is active, all ws:* skills inherit the mode:
+When ws-direct-talk is active, all ws-* skills inherit the mode:
 
-- **full** — all ws:* skills drop to caveman-terse prose
-- **lite** — all ws:* skills use tight professional prose
+- **full** — all ws-* skills drop to caveman-terse prose
+- **lite** — all ws-* skills use tight professional prose
 
-**Override:** ws:review severity prefixes (🔴🟡🔵❓) and ws:workmate output contracts stay as-is — those formats are already compressed.
+**Override:** ws-review severity prefixes (🔴🟡🔵❓) and ws-workmate output contracts stay as-is — those formats are already compressed.
 
 ## Boundaries
 

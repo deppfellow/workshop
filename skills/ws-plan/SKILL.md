@@ -1,12 +1,12 @@
 ---
-name: ws:plan
+name: ws-plan
 description: >
   Break a spec into independently-grabbable tasks using vertical tracer-bullet slices
-  grouped into epics. Use after ws:spec to create implementation plan.
-trigger: ws:plan, create plan, plan for, break down spec
+  grouped into epics. Use after ws-spec to create implementation plan.
+trigger: ws-plan, create plan, plan for, break down spec
 ---
 
-# ws:plan
+# ws-plan
 
 Vertical slices. Each cuts ALL layers end-to-end. Group related slices into epics. Portable task list + optional issue tracker push.
 
@@ -24,9 +24,9 @@ Read and understand the full scope.
 
 1. Read `docs/<slug>/spec.md` — problem, stories, architecture decisions
 2. Read `CONTEXT.md` and relevant ADRs
-3. Confirm: spec complete? Scope unambiguous? If not, stop — send back to `ws:spec`
+3. Confirm: spec complete? Scope unambiguous? If not, stop — send back to `ws-spec`
 
-**Dispatch `ws:workmate` investigator** for codebase exploration where spec references existing modules.
+**Dispatch `ws-workmate` investigator** for codebase exploration where spec references existing modules.
 
 ### Stage 2: SLICE
 
@@ -148,14 +148,14 @@ Or "None — can start immediately" if no blockers.
 - Never publish to issue tracker without user confirmation
 - Never skip the SLICE review gate
 - Never create horizontal slices (one layer at a time)
-- If spec is ambiguous, stop and request `ws:spec` revision — don't guess
+- If spec is ambiguous, stop and request `ws-spec` revision — don't guess
 - Acceptance criteria describe outcomes, not implementation steps
 - Verify steps must be concrete and runnable without inventing missing inputs
 - If a task needs many acceptance criteria or mixes unrelated decision clusters, split it
 
 ## Integration
 
-- Consumes `ws:spec` output
-- Feeds into `ws:tdd` (plan slice → build)
-- `ws:workmate` investigator dispatched during INGEST for codebase exploration
-- If issue tracker config missing, note it — `ws:install` should have scaffolded it
+- Consumes `ws-spec` output
+- Feeds into `ws-tdd` (plan slice → build)
+- `ws-workmate` investigator dispatched during INGEST for codebase exploration
+- If issue tracker config missing, note it — `ws-install` should have scaffolded it

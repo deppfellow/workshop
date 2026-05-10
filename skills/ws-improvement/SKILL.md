@@ -1,15 +1,15 @@
 ---
-name: ws:improvement
+name: ws-improvement
 description: >
   Find deepening opportunities in a codebase — refactors that turn shallow
   modules into deep ones. Informed by CONTEXT.md domain glossary and docs/adr/
   decisions. Use when user wants to improve architecture, find refactoring
   opportunities, consolidate tightly-coupled modules, or make a codebase more
   testable and AI-navigable.
-trigger: ws:improvement, improve architecture, refactor, deepen modules, architecture review
+trigger: ws-improvement, improve architecture, refactor, deepen modules, architecture review
 ---
 
-# ws:improvement
+# ws-improvement
 
 Surface architectural friction. Propose deepening opportunities. Turn shallow modules into deep ones. Aim: testability and AI-navigability.
 
@@ -54,7 +54,7 @@ Then walk the codebase. Don't follow rigid heuristics — explore organically an
 
 Apply the **deletion test** to anything you suspect is shallow: would deleting it concentrate complexity, or just move it? A "yes, concentrates" is the signal.
 
-**Dispatch `ws:workmate` investigator** for codebase exploration.
+**Dispatch `ws-workmate` investigator** for codebase exploration.
 
 ### Stage 2: PRESENT CANDIDATES
 
@@ -124,8 +124,8 @@ Numbered list with files, problem, solution, benefits.
 
 ## Integration
 
-- `ws:diagnose` post-mortem may hand off here for architectural findings
-- `ws:spec` may reference improvement opportunities
-- `ws:brainstorm-ref-docs` may create ADRs that inform this skill
-- `ws:workmate` investigator dispatched during EXPLORE
-- Feeds into `ws:plan` (improvement → implementation plan)
+- `ws-diagnose` post-mortem may hand off here for architectural findings
+- `ws-spec` may reference improvement opportunities
+- `ws-brainstorm-ref-docs` may create ADRs that inform this skill
+- `ws-workmate` investigator dispatched during EXPLORE
+- Feeds into `ws-plan` (improvement → implementation plan)

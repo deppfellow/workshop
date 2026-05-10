@@ -1,17 +1,17 @@
 ---
-name: ws:install
+name: ws-install
 description: >
-  Scaffold the workshop repo structure and install ws:* hybrid skills.
+  Scaffold the workshop repo structure and install ws-* hybrid skills.
   Detects IDE/agent, creates directory layout, writes skill files.
-  No external provider dependencies — ws:* skills are standalone.
-trigger: ws:install, setup workshop, install ws, scaffold workshop
+  No external provider dependencies — ws-* skills are standalone.
+trigger: ws-install, setup workshop, install ws, scaffold workshop
 ---
 
-# ws:install
+# ws-install
 
-Scaffold full repo. Install ws:* skills. Write config. Detect agent.
+Scaffold full repo. Install ws-* skills. Write config. Detect agent.
 
-No external provider install. ws:* skills are standalone.
+No external provider install. ws-* skills are standalone.
 
 Override `rules.md` guardrails. Exec permitted.
 
@@ -55,17 +55,17 @@ Create repo structure. Write config files.
 ```text
 project-root/
 ├── .docs/
-│   ├── ws:brainstorm/SKILL.md
-│   ├── ws:brainstorm-ref-docs/SKILL.md
-│   ├── ws:direct-talk/SKILL.md
-│   ├── ws:spec/SKILL.md
-│   ├── ws:plan/SKILL.md
-│   ├── ws:tdd/SKILL.md
-│   ├── ws:review/SKILL.md
-│   ├── ws:diagnose/SKILL.md
-│   ├── ws:improvement/SKILL.md
-│   ├── ws:workmate/SKILL.md
-│   └── ws:install/SKILL.md
+│   ├── ws-brainstorm/SKILL.md
+│   ├── ws-brainstorm-ref-docs/SKILL.md
+│   ├── ws-direct-talk/SKILL.md
+│   ├── ws-spec/SKILL.md
+│   ├── ws-plan/SKILL.md
+│   ├── ws-tdd/SKILL.md
+│   ├── ws-review/SKILL.md
+│   ├── ws-diagnose/SKILL.md
+│   ├── ws-improvement/SKILL.md
+│   ├── ws-workmate/SKILL.md
+│   └── ws-install/SKILL.md
 ├── docs/
 │   ├── adr/                    # Architecture Decision Records
 │   └── agents/                 # Agent skill references
@@ -85,30 +85,30 @@ project-root/
 # Domain Glossary
 
 <!-- Define project-specific terms here. -->
-<!-- Used by ws:spec, ws:plan, ws:diagnose for consistent language. -->
+<!-- Used by ws-spec, ws-plan, ws-diagnose for consistent language. -->
 ```
 
 `AGENTS.md` or `CLAUDE.md` (append workshop block):
 
 ```markdown
-## Workshop Skills (ws:*)
+## Workshop Skills (ws-*)
 
 Installed in `.docs/`. Hybrid engineering skills blending SDLC workflow,
 disciplined engineering, and terse communication.
 
 | Skill | Purpose | Invoke |
 |---|---|---|
-| ws:brainstorm | Relentless interview (stress-test plans) | ws:brainstorm |
-| ws:brainstorm-ref-docs | Docs-aware interview (updates CONTEXT.md + ADRs) | ws:brainstorm-ref-docs |
-| ws:direct-talk | Compact communication mode (lite/full) | ws:direct-talk |
-| ws:spec | Spec writer (requirements + design) | ws:spec |
-| ws:plan | Task breakdown (vertical slices + epics) | ws:plan |
-| ws:tdd | Test-driven development | ws:tdd |
-| ws:review | Code review (4 lenses) | ws:review |
-| ws:diagnose | Bug diagnosis (5-stage loop) | ws:diagnose |
-| ws:improvement | Architecture deepening | ws:improvement |
-| ws:workmate | Subagent orchestration | ws:workmate |
-| ws:install | Workshop setup | ws:install |
+| ws-brainstorm | Relentless interview (stress-test plans) | ws-brainstorm |
+| ws-brainstorm-ref-docs | Docs-aware interview (updates CONTEXT.md + ADRs) | ws-brainstorm-ref-docs |
+| ws-direct-talk | Compact communication mode (lite/full) | ws-direct-talk |
+| ws-spec | Spec writer (requirements + design) | ws-spec |
+| ws-plan | Task breakdown (vertical slices + epics) | ws-plan |
+| ws-tdd | Test-driven development | ws-tdd |
+| ws-review | Code review (4 lenses) | ws-review |
+| ws-diagnose | Bug diagnosis (5-stage loop) | ws-diagnose |
+| ws-improvement | Architecture deepening | ws-improvement |
+| ws-workmate | Subagent orchestration | ws-workmate |
+| ws-install | Workshop setup | ws-install |
 
 See `docs/agents/` for issue tracker, triage labels, and domain doc layout.
 ```
@@ -122,7 +122,7 @@ Single-context layout:
 - CONTEXT.md at project root — domain glossary
 - docs/adr/ — architecture decision records
 
-All ws:* skills read these for vocabulary and past decisions.
+All ws-* skills read these for vocabulary and past decisions.
 ```
 
 `skills-lock.json`:
@@ -131,17 +131,17 @@ All ws:* skills read these for vocabulary and past decisions.
 {
   "version": 1,
   "skills": {
-    "ws:brainstorm": { "source": "local", "skillPath": ".docs/ws:brainstorm/SKILL.md" },
-    "ws:brainstorm-ref-docs": { "source": "local", "skillPath": ".docs/ws:brainstorm-ref-docs/SKILL.md" },
-    "ws:direct-talk": { "source": "local", "skillPath": ".docs/ws:direct-talk/SKILL.md" },
-    "ws:spec": { "source": "local", "skillPath": ".docs/ws:spec/SKILL.md" },
-    "ws:plan": { "source": "local", "skillPath": ".docs/ws:plan/SKILL.md" },
-    "ws:tdd": { "source": "local", "skillPath": ".docs/ws:tdd/SKILL.md" },
-    "ws:review": { "source": "local", "skillPath": ".docs/ws:review/SKILL.md" },
-    "ws:diagnose": { "source": "local", "skillPath": ".docs/ws:diagnose/SKILL.md" },
-    "ws:improvement": { "source": "local", "skillPath": ".docs/ws:improvement/SKILL.md" },
-    "ws:workmate": { "source": "local", "skillPath": ".docs/ws:workmate/SKILL.md" },
-    "ws:install": { "source": "local", "skillPath": ".docs/ws:install/SKILL.md" }
+    "ws-brainstorm": { "source": "local", "skillPath": ".docs/ws-brainstorm/SKILL.md" },
+    "ws-brainstorm-ref-docs": { "source": "local", "skillPath": ".docs/ws-brainstorm-ref-docs/SKILL.md" },
+    "ws-direct-talk": { "source": "local", "skillPath": ".docs/ws-direct-talk/SKILL.md" },
+    "ws-spec": { "source": "local", "skillPath": ".docs/ws-spec/SKILL.md" },
+    "ws-plan": { "source": "local", "skillPath": ".docs/ws-plan/SKILL.md" },
+    "ws-tdd": { "source": "local", "skillPath": ".docs/ws-tdd/SKILL.md" },
+    "ws-review": { "source": "local", "skillPath": ".docs/ws-review/SKILL.md" },
+    "ws-diagnose": { "source": "local", "skillPath": ".docs/ws-diagnose/SKILL.md" },
+    "ws-improvement": { "source": "local", "skillPath": ".docs/ws-improvement/SKILL.md" },
+    "ws-workmate": { "source": "local", "skillPath": ".docs/ws-workmate/SKILL.md" },
+    "ws-install": { "source": "local", "skillPath": ".docs/ws-install/SKILL.md" }
   }
 }
 ```
@@ -150,7 +150,7 @@ All ws:* skills read these for vocabulary and past decisions.
 
 Post-install checks.
 
-- [ ] All 11 ws:* SKILL.md files present in `.docs/`
+- [ ] All 11 ws-* SKILL.md files present in `.docs/`
 - [ ] `skills-lock.json` valid and matches installed skills
 - [ ] `AGENTS.md` or `CLAUDE.md` has workshop block
 - [ ] `CONTEXT.md` exists
@@ -161,18 +161,18 @@ Post-install checks.
 
 - Agent detected: <agent>
 - Skills installed: 11/11
-- Next step: `ws:spec` to start feature work
+- Next step: `ws-spec` to start feature work
 
 ## Guardrails
 
 - Never overwrite existing `CONTEXT.md` — append if needed
 - Never delete existing `AGENTS.md` / `CLAUDE.md` — append workshop block
-- Never install external providers (blueprint, mattpocock, caveman) — ws:* only
+- Never install external providers (blueprint, mattpocock, caveman) — ws-* only
 - Never write to `docs/adr/` — create directory, leave empty for user
 
 ## Integration
 
 - First skill to run in any workshop-enabled project
-- Creates directory structure consumed by all other ws:* skills
-- `skills-lock.json` used by ws:install to check installation state on re-run
+- Creates directory structure consumed by all other ws-* skills
+- `skills-lock.json` used by ws-install to check installation state on re-run
 - Detects but does not modify `.agents/skills/` — coexists with existing skills

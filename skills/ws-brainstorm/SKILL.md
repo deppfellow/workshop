@@ -1,15 +1,15 @@
 ---
-name: ws:brainstorm
+name: ws-brainstorm
 description: >
   Relentless interview loop that stress-tests a plan, design, or idea until
   reaching shared understanding. Walks down each branch of the decision tree,
   resolving dependencies between decisions one-by-one. For each question,
   provides a recommended answer. Use when user wants to brainstorm, stress-test
   a plan, get grilled on their design, or says "brainstorm".
-trigger: ws:brainstorm, brainstorm, stress-test, grill me, interview me
+trigger: ws-brainstorm, brainstorm, stress-test, grill me, interview me
 ---
 
-# ws:brainstorm
+# ws-brainstorm
 
 Relentless interview. One question at a time. Walk the decision tree to the leaves. No skipping branches.
 
@@ -92,7 +92,7 @@ No file output by default. If user requests it, write to `docs/<slug>/brainstorm
 
 ## Integration
 
-- Feeds into `ws:spec` (brainstorm → spec)
-- Feeds into `ws:plan` (brainstorm → plan)
+- Feeds into `ws-spec` (brainstorm → spec)
+- Feeds into `ws-plan` (brainstorm → plan)
 - Can consume output from any skill as input to brainstorm
-- Use `ws:brainstorm-ref-docs` when domain glossary and ADR updates are needed inline
+- Use `ws-brainstorm-ref-docs` when domain glossary and ADR updates are needed inline
